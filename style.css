@@ -1,0 +1,62 @@
+body{
+    margin:0;
+    background:#003300;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.wrapper{
+    width:1300px;
+    margin:5px auto;
+    display:flex;
+    background:#ddd;
+}
+
+.sidebar{
+    width:220px;
+    background:linear-gradient(#c6c6d0,#8f8fa0);
+    padding:10px;
+}
+
+.logo{
+    width:100%;
+    margin-bottom:12px;
+    border:2px solid #555;
+}
+
+.main{
+    flex:1;
+    padding:10px;
+}
+
+.search-area{
+    background:#bfc0cc;
+    padding:10px;
+    border:1px solid #666;
+}
+
+.search-area input{
+    width:350px;
+    padding:4px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:30px;
+    margin-top:20px;
+}
+
+.category h2{
+    color:#003399;
+    font-style:italic;
+    margin-bottom:5px;
+}
+
+.category select{
+    width:270px;
+    background:#f5e8a0;
+}
+
+.category button{
+    margin-left:5px;
+}

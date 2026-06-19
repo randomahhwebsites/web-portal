@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>The Portal</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<div class="wrapper">
+
+    <div class="sidebar">
+
+    <a href="https://chat.openai.com" target="blank">
+        <img src="images/chatgpt.jpg" class="logo">
+    </a>
+
+    <a href="https://mail.google.com" target="blank">
+        <img src="images/gmail.jpg" class="logo">
+    </a>
+
+    <a href="https://netflix.com" target="blank">
+        <img src="images/netflix.jpg" class="logo">
+    </a>
+
+    <a href="https://youtube.com" target="blank">
+        <img src="images/youtube.jpg" class="logo">
+    </a>
+
+    </div>
+
+
+<div class="main">
+    <div class="search-area">
+
+        <input id="searchBox" type="text" placeholder="multi-search, enter text then click button">
+
+        <button onclick="search('google')">Google</button>
+        <button onclick="search('yahoo')">Yahoo</button>
+        <button onclick="search('bing')">Bing</button>
+
+
+    </div>
+    <div class="grid">
+
+    <div class="category">
+        <h2>Movies</h2>
+        <select id="moviesSelect">
+            <option value="https://www.netflix.com">Netflix</option>
+            <option value="https://www.disneyplus.com">Disney+</option>
+            <option value="https://www.hulu.com">Hulu</option>
+            <option value="https://www.paramountplus.com">Paramount Plus</option>
+            <option value="https://www.peacocktv.com">Peacock</option>
+        </select>
+        <button onclick="go('moviesSelect')">Go</button>
+    </div>
+    <div class="category">
+        <h2>Weather</h2>
+        <select id="weatherSelect">
+            <option value="https://www.wunderground.com">Weather Underground</option>
+            <option value="https://www.accuweather.com">AccuWeather</option>
+        </select>
+        <button onclick="go('weatherSelect')">Go</button>
+    </div>
+
+      <div class="category">
+                <h2>Top News Portals</h2>
+                <select id="topSelect">
+                    <option value="https://www.cnn.com">CNN</option>
+                    <option value="https://www.nytimes.com">The New York Times</option>
+                    <option value="https://www.bbc.com">BBC</option>
+                </select>
+                <button onclick="go('topSelect')">Go</button>
+            </div>
+    
+    <div class="category">
+        <h2>AI Platforms for nerds</h2>
+        <select id="aiSelect">
+            <option value="https://www.youtube.com/watch?v=dQw4w9WgXcQ">ChatGPT</option> 
+            <option value="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Claude</option>  
+            <option value="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Deepseek</option> 
+            <option value="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Copilot</option>
+        </select>
+        <button onclick="go('aiSelect')">Go</button>
+    </div>
+
+    <div class="category">
+        <h2>Social Media</h2>
+        <select id="socialSelect">
+            <option value="https://www.youtube.com">Youtube</option>
+            <option value="https://www.tiktok.com">Tiktok</option>
+            <option value="https://www.facebook.com">Facebook</option>
+            <option value="https://www.Instagram.com">Instagram</option>
+            <option value="https://www.snapchat.com">Snapchat</option>
+            <option value="https://www.x.com">Twitter</option>
+        </select>
+        <button onclick="go('socialSelect')">Go</button>
+    </div>
+</div>
+</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
