@@ -1,261 +1,88 @@
-/* ==========================================================================
-   1. DESIGN SYSTEM VARIABLES (THE ACCENT IS LIGHT, CLEAN, & INTUITIVE)
-   ========================================================================== */
-:root {
-    --bg-primary: #f5f5f7;
-    --text-primary: #1d1d1f;
-    --text-muted: #6e6e73;
-    --accent-blue: #0071e3;
-    --card-bg: #ffffff;
-    --input-bg: #f5f5f7;
-    
-    /* Smooth, natural spring curve for human-like animations */
-    --apple-ease: cubic-bezier(0.25, 1, 0.5, 1);
+body{
+    margin:0;
+    background:#0f1117;
+    color:#fff;
+    font-family:Arial,sans-serif;
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    -webkit-font-smoothing: antialiased;
+.wrapper{
+    max-width:1300px;
+    margin:20px auto;
+    display:flex;
+    gap:20px;
+    padding:20px;
 }
 
-body {
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
-    letter-spacing: -0.015em;
+.sidebar{
+    width:240px;
+    background:#171c26;
+    border-radius:16px;
+    padding:16px;
 }
 
-/* ==========================================================================
-   2. MAIN SITE ARCHITECTURE (PRESERVING YOUR WIDE SIDEBAR STRUCTURE)
-   ========================================================================== */
-.wrapper {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 60px 40px;
-    display: flex;
-    gap: 48px;
+.logo{
+    width:100%;
+    border-radius:12px;
 }
 
-/* Sidebar: Restored to its rightful wide layout, but polished */
-.sidebar {
-    width: 200px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.main{
+    flex:1;
 }
 
-.logo {
-    width: 100%;
-    border-radius: 22px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
-    transition: transform 0.4s var(--apple-ease), box-shadow 0.4s var(--apple-ease);
+.search-area{
+    background:#171c26;
+    border-radius:16px;
+    padding:16px;
 }
 
-/* Premium, tactile hover instead of a standard scale */
-.logo:hover {
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+.search-area input{
+    width:100%;
+    max-width:500px;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:#232937;
+    color:white;
 }
 
-.logo:active {
-    transform: translateY(0) scale(0.99);
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+    margin-top:20px;
 }
 
-/* Main Dashboard Canvas */
-.main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+.category{
+    background:#171c26;
+    border-radius:16px;
+    padding:16px;
+    transition:transform .15s;
 }
 
-/* ==========================================================================
-   3. SEARCH CONSOLE (CONVERSATIONAL & INTUITIVE)
-   ========================================================================== */
-.search-area {
-    background: var(--card-bg);
-    border-radius: 28px;
-    padding: 36px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.02);
+.category:hover{
+    transform:translateY(-2px);
 }
 
-#searchBox {
-    width: 100%;
-    padding: 18px 24px;
-    border: 1px solid transparent;
-    border-radius: 16px;
-    background: var(--input-bg);
-    font-size: 16px;
-    font-weight: 400;
-    color: var(--text-primary);
-    outline: none;
-    transition: all 0.3s var(--apple-ease);
-    margin-bottom: 24px;
+.category h2{
+    color:#7aa2ff;
+    margin:0 0 12px;
 }
 
-#searchBox::placeholder {
-    color: var(--text-muted);
+.category select{
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:10px;
+    background:#232937;
+    color:white;
 }
 
-/* Glow gets soft and subtle, never harsh */
-#searchBox:focus {
-    background: #ffffff;
-    border-color: rgba(0, 113, 227, 0.4);
-    box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
-}
-
-/* Search Engine Buttons */
-.search-area button {
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    background: #ffffff;
-    color: var(--text-primary);
-    padding: 10px 24px;
-    border-radius: 980px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    margin-right: 10px;
-    transition: all 0.25s var(--apple-ease);
-}
-
-.search-area button:hover {
-    background: var(--text-primary);
-    border-color: var(--text-primary);
-    color: #ffffff;
-}
-
-.search-area button:active {
-    transform: scale(0.96);
-}
-
-/* ==========================================================================
-   4. THE BENTO GRID (CLEAN, WHITE SPACES)
-   ========================================================================== */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 32px;
-}
-
-.category {
-    background: var(--card-bg);
-    border-radius: 28px;
-    padding: 36px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.02);
-    transition: transform 0.4s var(--apple-ease), box-shadow 0.4s var(--apple-ease);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-/* Cards gently lift up on hover to invite interaction */
-.category:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.05);
-}
-
-.category h2 {
-    margin-top: 0;
-    margin-bottom: 24px;
-    font-size: 22px;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    color: var(--text-primary);
-}
-
-/* ==========================================================================
-   5. CONTROLS & DROPDOWNS (ELEGANT & INPUT-DRIVEN)
-   ========================================================================== */
-/* The select dropdown gets a premium inline custom chevron */
-.category select {
-    width: 100%;
-    padding: 16px;
-    border: 1px solid transparent;
-    border-radius: 14px;
-    background: var(--input-bg) url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236e6e73' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") no-repeat right 16px center;
-    color: var(--text-primary);
-    outline: none;
-    font-size: 15px;
-    font-weight: 500;
-    appearance: none;
-    -webkit-appearance: none;
-    cursor: pointer;
-    transition: all 0.3s var(--apple-ease);
-}
-
-.category select:hover {
-    background-color: rgba(0, 0, 0, 0.06);
-}
-
-.category select:focus {
-    background-color: #ffffff;
-    border-color: rgba(0, 113, 227, 0.4);
-    box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
-}
-
-/* Action Nav Buttons ("Go") */
-.category button {
-    width: 100%;
-    margin-top: 20px;
-    padding: 14px;
-    border: none;
-    border-radius: 14px;
-    background: var(--accent-blue);
-    color: #ffffff;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.25s var(--apple-ease);
-}
-
-.category button:hover {
-    background: #0077ed;
-    transform: translateY(-1px);
-}
-
-.category button:active {
-    background: #0066cc;
-    transform: translateY(0) scale(0.98);
-}
-
-/* The Useless Button Style Pivot */
-.category:last-child button {
-    background: #f5f5f7;
-    color: var(--text-primary);
-    border: 1px solid rgba(0, 0, 0, 0.04);
-}
-
-.category:last-child button:hover {
-    background: #e8e8ed;
-    color: #000000;
-}
-
-/* ==========================================================================
-   6. RESPONSIVE COMPACT ENGINES (FOR EXCELLENT CHROMEBOOK SPEED)
-   ========================================================================== */
-@media (max-width: 900px) {
-    .wrapper {
-        flex-direction: column;
-        padding: 32px 20px;
-        gap: 32px;
-    }
-
-    .sidebar {
-        width: 100%;
-        flex-direction: row;
-        overflow-x: auto;
-        padding-bottom: 8px;
-    }
-
-    .logo {
-        min-width: 120px;
-        max-width: 120px;
-    }
-
-    .grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
+.category button{
+    width:100%;
+    margin-top:10px;
+    padding:10px;
+    border:none;
+    border-radius:10px;
+    background:#4f7cff;
+    color:white;
 }
