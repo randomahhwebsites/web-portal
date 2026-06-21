@@ -1,170 +1,318 @@
+/* ==========================================================================
+   1. GLOBAL SYSTEM RESETS & VARIABLES (APPLE ARCHITECTURE)
+   ========================================================================== */
+:root {
+    --apple-bg: #f5f5f7;
+    --apple-text: #1d1d1f;
+    --apple-text-secondary: #86868b;
+    --apple-blue: #0071e3;
+    --apple-blue-hover: #147ce5;
+    --apple-blue-active: #0066cc;
+    --apple-card-bg: rgba(255, 255, 255, 0.85);
+    --apple-input-bg: rgba(0, 0, 0, 0.04);
+    --apple-input-hover: rgba(0, 0, 0, 0.06);
+    --apple-glass-border: rgba(0, 0, 0, 0.04);
+    --apple-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+    --apple-shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.12);
+    --apple-radius-card: 24px;
+    --apple-radius-pill: 980px;
+    --apple-radius-control: 12px;
+    --apple-curve: cubic-bezier(0.25, 1, 0.5, 1); /* Apple Fluid Dynamics */
+}
+
 *{
-    box-sizing:border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-body{
-    margin:0;
-    background:#f5f5f7;
-    color:#1d1d1f;
-    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
+body {
+    background-color: var(--apple-bg);
+    color: var(--apple-text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    letter-spacing: -0.011em;
+    line-height: 1.47059;
 }
 
-.wrapper{
-    max-width:1400px;
-    margin:0 auto;
-    padding:40px;
-    display:flex;
-    gap:40px;
+/* ==========================================================================
+   2. SITE LAYOUT ARCHITECTURE
+   ========================================================================== */
+.wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 80px 40px;
+    display: flex;
+    gap: 48px;
+    align-items: flex-start;
 }
 
-/* Sidebar */
-
-.sidebar{
-    width:200px;
-    display:flex;
-    flex-direction:column;
-    gap:16px;
+/* ==========================================================================
+   3. SIDEBAR LOGOS (THE MAC OS DOCK EFFECT)
+   ========================================================================== */
+.sidebar {
+    width: 72px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: sticky;
+    top: 40px;
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid var(--apple-glass-border);
+    border-radius: 24px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: var(--apple-shadow);
 }
 
-.logo{
-    width:100%;
-    border-radius:22px;
-    transition:.25s ease;
-    box-shadow:0 4px 20px rgba(0,0,0,.08);
+.sidebar a {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 12px;
+    position: relative;
 }
 
-.logo:hover{
-    transform:scale(1.02);
+.logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: transform 0.4s var(--apple-curve), box-shadow 0.4s var(--apple-curve);
+    will-change: transform;
 }
 
-/* Main */
-
-.main{
-    flex:1;
+/* Hover Physics for Dock Icons */
+.sidebar a:hover .logo {
+    transform: scale(1.18) translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.16);
 }
 
-/* Search Area */
-
-.search-area{
-    background:white;
-    border-radius:30px;
-    padding:30px;
-    box-shadow:0 8px 30px rgba(0,0,0,.06);
-    margin-bottom:30px;
+.sidebar a:active .logo {
+    transform: scale(0.98) translateY(0);
 }
 
-#searchBox{
-    width:100%;
-    padding:18px 22px;
-    border:none;
-    border-radius:999px;
-    background:#f0f0f2;
-    font-size:16px;
-    outline:none;
-    color:#1d1d1f;
-    margin-bottom:16px;
+/* ==========================================================================
+   4. MAIN CANVAS & CORE SEARCH CONSOLE
+   ========================================================================== */
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
 }
 
-/* Search Buttons */
-
-.search-area button{
-    border:none;
-    background:#ffffff;
-    color:#1d1d1f;
-    padding:12px 22px;
-    border-radius:999px;
-    font-weight:600;
-    cursor:pointer;
-    margin-right:8px;
-    box-shadow:0 2px 10px rgba(0,0,0,.06);
-    transition:.2s;
+.search-area {
+    background: var(--apple-card-bg);
+    border: 1px solid var(--apple-glass-border);
+    border-radius: var(--apple-radius-card);
+    padding: 32px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: var(--apple-shadow);
 }
 
-.search-area button:hover{
-    background:#0071e3;
-    color:white;
+#searchBox {
+    width: 100%;
+    padding: 16px 24px;
+    border: 1px solid transparent;
+    border-radius: var(--apple-radius-control);
+    background: var(--apple-input-bg);
+    font-family: inherit;
+    font-size: 17px;
+    color: var(--apple-text);
+    outline: none;
+    transition: all 0.3s var(--apple-curve);
+    margin-bottom: 20px;
 }
 
-/* Cards */
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:24px;
+#searchBox::placeholder {
+    color: var(--apple-text-secondary);
 }
 
-.category{
-    background:white;
-    border-radius:30px;
-    padding:28px;
-    box-shadow:0 8px 30px rgba(0,0,0,.06);
-    transition:.25s ease;
+#searchBox:hover {
+    background: var(--apple-input-hover);
 }
 
-.category:hover{
-    transform:translateY(-3px);
+#searchBox:focus {
+    background: #ffffff;
+    border-color: var(--apple-blue);
+    box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.15);
 }
 
-.category h2{
-    margin-top:0;
-    margin-bottom:18px;
-    font-size:1.4rem;
-    font-weight:700;
-    color:#1d1d1f;
+/* Search Engine Control Elements */
+.search-area button {
+    border: 1px solid rgba(0,0,0,0.1);
+    background: #ffffff;
+    color: var(--apple-text);
+    padding: 8px 18px;
+    border-radius: var(--apple-radius-pill);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    transition: all 0.25s var(--apple-curve);
 }
 
-/* Dropdown */
-
-.category select{
-    width:100%;
-    padding:14px;
-    border:none;
-    border-radius:16px;
-    background:#f0f0f2;
-    color:#1d1d1f;
-    outline:none;
-    font-size:15px;
+.search-area button:hover {
+    background: var(--apple-blue);
+    border-color: var(--apple-blue);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 113, 227, 0.2);
 }
 
-/* Go Buttons */
-
-.category button{
-    width:100%;
-    margin-top:14px;
-    padding:14px;
-    border:none;
-    border-radius:16px;
-    background:#0071e3;
-    color:white;
-    font-weight:600;
-    cursor:pointer;
-    transition:.2s;
+.search-area button:active {
+    transform: scale(0.97);
 }
 
-.category button:hover{
-    background:#0077ed;
+/* ==========================================================================
+   5. BENTO GRID GRID MODULE
+   ========================================================================== */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
 }
 
-/* Mobile */
+/* Premium Card Panels */
+.category {
+    background: var(--apple-card-bg);
+    border: 1px solid var(--apple-glass-border);
+    border-radius: var(--apple-radius-card);
+    padding: 32px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: var(--apple-shadow);
+    transition: transform 0.5s var(--apple-curve), box-shadow 0.5s var(--apple-curve), background-color 0.5s var(--apple-curve);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
-@media (max-width:900px){
+.category:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--apple-shadow-hover);
+    background: #ffffff;
+}
 
-    .wrapper{
-        flex-direction:column;
-        padding:20px;
+.category h2 {
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: -0.022em;
+    color: var(--apple-text);
+    margin-bottom: 20px;
+}
+
+/* ==========================================================================
+   6. CUSTOM NATIVE OVERRIDES (DROPDOWNS & ACTIONS)
+   ========================================================================== */
+.category select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid transparent;
+    border-radius: var(--apple-radius-control);
+    background: var(--apple-input-bg) url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2386868b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") no-repeat right 16px center;
+    color: var(--apple-text);
+    outline: none;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    appearance: none;
+    -webkit-appearance: none;
+    transition: all 0.3s var(--apple-curve);
+    cursor: pointer;
+}
+
+.category select:hover {
+    background-color: var(--apple-input-hover);
+}
+
+.category select:focus {
+    background-color: #ffffff;
+    border-color: var(--apple-blue);
+    box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.15);
+}
+
+/* System Action Triggers */
+.category button {
+    width: 100%;
+    margin-top: 16px;
+    padding: 14px;
+    border: none;
+    border-radius: var(--apple-radius-control);
+    background: var(--apple-blue);
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    transition: all 0.3s var(--apple-curve);
+    box-shadow: 0 2px 8px rgba(0, 113, 227, 0.15);
+}
+
+.category button:hover {
+    background: var(--apple-blue-hover);
+    box-shadow: 0 6px 20px rgba(0, 113, 227, 0.3);
+}
+
+.category button:active {
+    background: var(--apple-blue-active);
+    transform: scale(0.98);
+}
+
+/* Specialty Styling for "The Useless Button" Card */
+.category:last-child {
+    justify-content: flex-end;
+}
+.category:last-child h2 {
+    margin-bottom: auto;
+    padding-bottom: 24px;
+}
+.category:last-child button {
+    margin-top: 0;
+    background: var(--apple-text);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.category:last-child button:hover {
+    background: #000000;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+/* ==========================================================================
+   7. CHROMEBOOK-READY LIGHTWEIGHT MOBILE RESPONSIVENESS
+   ========================================================================== */
+@media (max-width: 834px) {
+    .wrapper {
+        flex-direction: column;
+        padding: 40px 24px;
+        gap: 32px;
     }
 
-    .sidebar{
-        width:100%;
-        flex-direction:row;
-        overflow-x:auto;
+    .sidebar {
+        width: 100%;
+        position: static;
+        flex-direction: row;
+        justify-content: center;
+        padding: 12px;
+        gap: 16px;
+        overflow-x: auto;
     }
 
-    .logo{
-        min-width:140px;
+    .sidebar a {
+        width: 54px;
     }
 
-    .grid{
-        grid-template-columns:1fr;
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 20px;
+    }
+    
+    .category {
+        padding: 24px;
     }
 }
